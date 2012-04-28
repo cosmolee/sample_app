@@ -2,6 +2,12 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'bootstrap-sass', '2.0.0'
+gem 'jquery-rails', '2.0.0'
+
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', :platform => :ruby
+
+
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.0.1'
@@ -22,8 +28,6 @@ group :assets do
   gem 'uglifier', '1.2.3'
 end
 
-gem 'jquery-rails', '2.0.0'
-
 group :test, :development do
   gem 'rspec-rails', '2.9.0'
   gem 'guard-rspec', '0.5.5'
@@ -36,14 +40,15 @@ group :test do
   gem 'factory_girl_rails', '1.4.0'
   gem 'cucumber-rails', '1.2.1', require: false
   gem 'database_cleaner', '0.7.0'
+
+#listing 3.33
+  gem 'rb-inotify', '0.8.8'
+  gem 'libnotify', '0.5.9'
 end
 
 group :production do
   gem 'pg', '0.12.2'
 end
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-   gem 'therubyracer', :platform => :ruby
 
 
 # To use debugger
