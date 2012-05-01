@@ -1,18 +1,22 @@
 SampleApp::Application.routes.draw do
 
-  root to: 'static_pages#home'
   # equivalent to: match '/',    to: 'static_pages#home'
+  root to: 'static_pages#home'
 
+  # These set up "named routes" help_path, about_path, etc...
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
-  # These set up "named routes" help_path, about_path, etc...
+
   # Using `get` instead of `match` would also set up named routes, but `match` terminology is conventional - listing 5.21
   #get "static_pages/home"
   #get "static_pages/help"
   #get "static_pages/about"
   #get "static_pages/contact"
 
+
+  get "users/new"
+  match '/signup',  to: 'users#new'
 
 
 

@@ -1,30 +1,32 @@
 require 'spec_helper'
 
 describe "Static pages" do
+  subject { page }           # Using the (Capybara) `subject` block allows condensed `it` blocks w/o the `page.*` naming.  See "Help" tests for UN-condensed version of tests.
 
-  describe "Home page" do
+  describe "Home page" do      # Sec 5.3.4: Condensed version of tests.
+    before { visit root_path } # The `before` block runs before each `it` block.  Synonym: `before(:each)`
 
-    it "should have the h1 'Sample App'" do
-      visit root_path
-      #visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'Sample App')
-    end
+    it { should have_selector('h1', text: 'Sample App') }
+    it { should have_selector('title', text: full_title('')) }
+    it { should_not have_selector('title', text: '| Home') }
+  end
 
-    it "should have the base title" do
-      visit root_path
-      #visit '/static_pages/home'
-      page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App")
-    end
+  describe "About page" do
+    before { visit about_path }
 
-    it "should not have a custom page title" do
-      visit root_path
-      #visit '/static_pages/home'
-      page.should_not have_selector('title', :text => '| Home')
-    end
+    it { should have_selector('h1', text: 'About Us') }
+    it { should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | About Us") }
+  end
+
+  describe "Contact page" do
+    before { visit contact_path }
+
+    it { should have_selector('h1', text: 'Contact') }
+    it { should have_selector('title', text: "Ruby on Rails Tutorial Sample App | Contact") }
   end
 
 
-  describe "Help page" do
+  describe "Help page" do     # Non-condensed version of tests.
 
     it "should have the content 'Help'" do
       visit help_path
@@ -37,37 +39,6 @@ describe "Static pages" do
       visit help_path
       #visit '/static_pages/help'
       page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | Help")
-    end
-  end
-
-  describe "About page" do
-
-    it "should have the content 'About Us'" do
-      visit about_path
-      #visit '/static_pages/about'
-      page.should have_selector('h1', text: 'About Us')
-      #page.should have_content('About Us')
-    end
-
-    it "should have the title 'About Us'" do
-      visit about_path
-      #visit '/static_pages/about'
-      page.should have_selector('title', :text => "Ruby on Rails Tutorial Sample App | About Us")
-    end
-  end
-
-  describe "Contact page" do
-
-    it "should have the h1 'Contact'" do
-      visit contact_path
-      #visit '/static_pages/contact'
-      page.should have_selector('h1', text: 'Contact')
-    end
-
-    it "should have the title 'Contact'" do
-      visit contact_path
-      #visit '/static_pages/contact'
-      page.should have_selector('title', text: "Ruby on Rails Tutorial Sample App | Contact")
     end
   end
 
