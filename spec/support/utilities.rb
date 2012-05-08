@@ -1,3 +1,4 @@
+#require 'spec_helper'
 include ApplicationHelper
 
 # See note in spec/helpers/application_helper_spec.rb re: Ex 5.6.3.
