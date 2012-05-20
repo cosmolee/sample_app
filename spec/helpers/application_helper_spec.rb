@@ -8,7 +8,7 @@ require 'spec_helper'
 
 # 05/05/2012: Answer: This is testing the viability of the ~/app/helpers/application_helper.rb#full_title() method.  
 
-# Odd: including this file from "utility.rb" allows the rspec tests to call `full_title()` directly, with no need for a duplicate method originally provided by "utility.rb".  This, even though no `full_title()` method is defined here.  You can test this out by commenting out ALL code in this file and running the rspec tests successfully without any errors flagging `full_title()` as undefined...
+# Odd: including this file from "utility.rb" allows the rspec tests to call `full_title()` directly from the application code, with no need for a duplicate method originally provided by "utility.rb".  This, even though no `full_title()` method is defined here.  You can test this out by commenting out ALL code in this file and running the rspec tests successfully without any errors flagging `full_title()` as undefined...
 
 
 describe ApplicationHelper do

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Static pages" do
   subject { page }           
   # Using the (Capybara) `subject` block allows condensed `it` blocks w/o the `page.*` reference.  See "Help page" tests for UN-condensed version of tests for comparison.
-  # Sect 5.3.4: Because of subject { page }, the call to should automatically uses the page variable supplied by Capybara .
+  # Sect 5.3.4: Because of subject { page }, the call to `should()` automatically uses the page variable supplied by Capybara .
 
  shared_examples_for "all static pages" do  # This is for the blocks to use the "shared examples" facility of RSpec.
     it { should have_selector('h1',    text: heading) }

@@ -29,7 +29,15 @@ class User < ActiveRecord::Base
 
   # Per ROR Tutorial 2nd Ed, listing 6.23: "...not all database adapters use case-sensitive indices"
   before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token
 
+
+
+  private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 
 
 end
